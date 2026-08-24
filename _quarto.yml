@@ -1,0 +1,26 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  html:
+    theme: cosmo
+    toc: false
+    css: styles.css
+
+website:
+  title: "Pedro J. Torres-Lopez"
+  navbar:
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "Teaching"
+        href: teaching.qmd
+      - text: "Other"
+        href: other.qmd
+  page-footer:
+    left: "© 2026 Pedro J. Torres-Lopez"
+    right: "p.torres-lopez@lse.ac.uk"
+
