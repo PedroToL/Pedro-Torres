@@ -1,9 +1,9 @@
 ---
-title: "Pedro J. Torres-Lopez"
+title: "Pedro Javier Torres Lopez"
 image: files/photo.jpg
 about:
   template: jolla
-  image-shape: rectangle
+  image-shape: round
   image-width: 15em
   links:
     - icon: envelope
@@ -20,11 +20,10 @@ about:
       href: https://github.com/PedroToL
 ---
 
-I am a PhD candidate in Social Policy at the London School of Economics, supervised by Stephen Jenkins and Francisco Ferreira. My research lies at the intersection of social policy, welfare analysis, development economics, and social economics, with a particular emphasis on methodological work.
+I am a PhD candidate in Social Policy at the [London School of Economics](https://www.lse.ac.uk), supervised by [Stephen Jenkins](https://www.lse.ac.uk/social-policy/people/academic-staff/Professor-Stephen-Jenkins) and [Francisco Ferreira](https://www.lse.ac.uk/people/francisco-h.-g.-ferreira). My research lies at the intersection of social policy, welfare analysis, development economics, and social economics, with a particular emphasis on methodological work.
 
 **I am currently on the 2026–27 academic job market.**
 
 ## Research Interests
 
 Poverty and inequality · Labour economics · Applied econometrics · Computational social science
-

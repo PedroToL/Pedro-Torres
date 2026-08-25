@@ -1,0 +1,54 @@
+/* Overall navbar height/padding */
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Site title on the left */
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+/* Nav links: About / Research / Teaching / Other */
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Kill underlines everywhere, full stop — no hover exception this time */
+a, a:hover, a:visited {
+  text-decoration: none !important;
+}
+
+/* Paper titles (h2 links) should read as plain heading text, not "linky" blue */
+h2 a,
+h2 a:visited {
+  color: inherit !important;
+}
+
+/* Give titles a subtle hover cue instead, since color+underline are both gone */
+h2 a:hover {
+  opacity: 0.7;
+}
+
+.abstract-teaser {
+  color: #595959;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  text-align-last: left;
+}
+
+.abstract-teaser.expanded {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+}
+
+.abstract-teaser:hover {
+  opacity: 0.75;
+}
+

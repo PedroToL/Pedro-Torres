@@ -5,12 +5,20 @@ project:
 format:
   html:
     theme: cosmo
+    fontsize: 1.15em
     toc: false
     css: styles.css
+    grid:
+      body-width: 1100px
+      margin-width: 100px
+      sidebar-width: 100px
+
 
 website:
-  title: "Pedro J. Torres-Lopez"
+  title: "Pedro Torres"
   navbar:
+    background: "#274f63"
+    foreground: light
     left:
       - text: "About"
         href: index.qmd
@@ -21,6 +29,6 @@ website:
       - text: "Other"
         href: other.qmd
   page-footer:
-    left: "© 2026 Pedro J. Torres-Lopez"
+    left: "© 2026 Pedro Javier Torres Lopez"
     right: "p.torres-lopez@lse.ac.uk"
 
