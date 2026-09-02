@@ -8,13 +8,7 @@ library(dplyr)
 library(stringr)
 library(glue)
 
-# ---------------------------------------------------------------------------
-# PATH HANDLING
-# Resolves the script's own folder, then treats its parent as the project
-# root — so this works whether you run it from the project root or from
-# inside src/.
-# ---------------------------------------------------------------------------
-script_dir <- "./src/"
+script_dir <- "src"
 project_root <- normalizePath(file.path(script_dir, ".."))
 
 papers <- read_tsv(
@@ -23,14 +17,8 @@ papers <- read_tsv(
   locale = locale(encoding = "UTF-8")
 )
 
-# ---------------------------------------------------------------------------
-# HELPERS
-# ---------------------------------------------------------------------------
-
-# Turns NA / blank cells into "" so glue() never prints literal "NA"
 safe <- function(x) ifelse(is.na(x) | str_trim(x) == "", "", str_trim(x))
 
-# "A" / "A and B" / "A, B and C" — no Oxford comma
 join_names <- function(names) {
   n <- length(names)
   if (n == 0) return("")
@@ -39,7 +27,6 @@ join_names <- function(names) {
   paste0(paste(names[1:(n - 1)], collapse = ", "), " and ", names[n])
 }
 
-# Co-author fragment: "with A and B" (<=5 names) or "with N co-authors"
 format_coauthor_frag <- function(co_authors) {
   co_authors <- safe(co_authors)
   if (co_authors == "") return(NULL)
@@ -48,7 +35,6 @@ format_coauthor_frag <- function(co_authors) {
   if (n <= 5) glue("with {join_names(names)}") else glue("with {n} co-authors")
 }
 
-# Venue + year as one clickable fragment (or plain text if no URL exists)
 format_venue_line <- function(type, journal, link, doi, date) {
   journal <- safe(journal); link <- safe(link); doi <- safe(doi); date <- safe(date)
   url <- if (doi != "") glue("https://doi.org/{doi}") else if (link != "") link else ""
@@ -72,7 +58,6 @@ format_venue_line <- function(type, journal, link, doi, date) {
   if (url != "") glue("[{label}]({url})") else label
 }
 
-# Escapes text going into HTML data-* attributes
 escape_html_attr <- function(x) {
   x <- str_replace_all(x, "&", "&amp;")
   x <- str_replace_all(x, '"', "&quot;")
@@ -81,17 +66,16 @@ escape_html_attr <- function(x) {
   x
 }
 
-# Click-to-expand abstract teaser. Short abstracts render as a plain <p>;
-# long ones render as a clickable <p> that swaps teaser <-> full text via JS.
-format_abstract_block <- function(abstract) {
+# Abstract block now carries an explicit id, so the title's click can target it
+format_abstract_block <- function(abstract, abstract_id) {
   abstract <- safe(abstract)
   if (abstract == "") return(NULL)
-  glue('<p class="abstract-teaser" onclick="toggleAbstract(this)">{escape_html_attr(abstract)}</p>')
+  glue(
+    '<p id="{abstract_id}" class="abstract-teaser" ',
+    'onclick="toggleAbstract(\'{abstract_id}\')">{escape_html_attr(abstract)}</p>'
+  )
 }
 
-# ---------------------------------------------------------------------------
-# SECTION SETUP
-# ---------------------------------------------------------------------------
 sections <- c("job market paper", "published", "working paper",
               "book chapter", "work in progress")
 section_titles <- c("Job Market Paper", "Publications", "Working Papers",
@@ -111,17 +95,18 @@ for (i in seq_along(sections)) {
   for (r in seq_len(nrow(sec_papers))) {
     p <- sec_papers[r, ]
     ptype <- str_trim(p$type)
+    abstract_id <- glue("abstract-{p$slug}")
+    has_abstract <- safe(p$abstract) != ""
 
-    # --- H2 title, linked unless work in progress ---
-    title_txt <- if (ptype == "work in progress") {
-      glue("## {p$title}")
+    # --- Title: plain heading, clickable to expand its abstract if one exists ---
+    title_txt <- if (has_abstract) {
+      glue('<h2 class="expandable-title" onclick="toggleAbstract(\'{abstract_id}\')">{p$title}</h2>')
     } else {
-      glue("## [{p$title}]({p$slug}.html)")
+      glue("## {p$title}")
     }
     body <- c(body, title_txt, "")
 
-    # --- Info block: subtitle + venue/authors + coordination/editor,
-    #     joined with <br> into ONE tight paragraph ---
+    # --- Info block: subtitle + venue/authors + coordination/editor, tight <br> ---
     info_lines <- character(0)
 
     subtitle <- safe(p$subtitle)
@@ -150,15 +135,12 @@ for (i in seq_along(sections)) {
 
     body <- c(body, paste(info_lines, collapse = "<br>"), "")
 
-    # --- Abstract teaser (click-to-expand) ---
-    abstract_block <- format_abstract_block(p$abstract)
+    # --- Abstract (click-to-expand, one-line ellipsis until expanded) ---
+    abstract_block <- format_abstract_block(p$abstract, abstract_id)
     if (!is.null(abstract_block)) body <- c(body, abstract_block, "")
   }
 }
 
-# ---------------------------------------------------------------------------
-# HEADER (includes the toggle-abstract JS)
-# ---------------------------------------------------------------------------
 header <- c(
   "---",
   "---",
@@ -167,11 +149,13 @@ header <- c(
   "     src/_gen_qmd.R instead, then re-run Rscript src/_gen_qmd.R -->",
   "",
   "<script>",
-  "function toggleAbstract(el) {",
-  "  el.classList.toggle('expanded');",
+  "function toggleAbstract(id) {",
+  "  var el = document.getElementById(id);",
+  "  if (el) el.classList.toggle('expanded');",
   "}",
   "</script>",
   ""
 )
+
 writeLines(c(header, body), file.path(project_root, "research.qmd"))
 cat("research.qmd written to", file.path(project_root, "research.qmd"), "\n")

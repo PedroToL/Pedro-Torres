@@ -8,7 +8,7 @@ library(dplyr)
 library(stringr)
 library(glue)
 
-script_dir <- "./src/"
+script_dir <- "src"
 project_root <- normalizePath(file.path(script_dir, ".."))
 
 teaching <- read_tsv(
@@ -17,10 +17,8 @@ teaching <- read_tsv(
   locale = locale(encoding = "UTF-8")
 )
 
-# --- NA-safe accessor: turns NA/blank cells into "" ---
 safe <- function(x) ifelse(is.na(x) | str_trim(x) == "", "", str_trim(x))
 
-# --- "A" / "A and B" / "A, B and C" — no Oxford comma ---
 join_names <- function(names) {
   n <- length(names)
   if (n == 0) return("")
@@ -29,7 +27,6 @@ join_names <- function(names) {
   paste0(paste(names[1:(n - 1)], collapse = ", "), " and ", names[n])
 }
 
-# --- Escapes text for safe use inside HTML attributes ---
 escape_html_attr <- function(x) {
   x <- str_replace_all(x, "&", "&amp;")
   x <- str_replace_all(x, '"', "&quot;")
@@ -38,11 +35,14 @@ escape_html_attr <- function(x) {
   x
 }
 
-# --- Click-to-expand, one-line-ellipsis teaser (same style as research.qmd) ---
-format_teaser_block <- function(text) {
+# Description block now carries an explicit id, so the title's click can target it
+format_teaser_block <- function(text, teaser_id) {
   text <- safe(text)
   if (text == "") return(NULL)
-  glue('<p class="abstract-teaser" onclick="toggleAbstract(this)">{escape_html_attr(text)}</p>')
+  glue(
+    '<p id="{teaser_id}" class="abstract-teaser" ',
+    'onclick="toggleAbstract(\'{teaser_id}\')">{escape_html_attr(text)}</p>'
+  )
 }
 
 body <- character(0)
@@ -59,13 +59,19 @@ if (nrow(courses) > 0) {
     code <- safe(p$code); name <- safe(p$name); role <- safe(p$role)
     term <- safe(p$term); institution <- safe(p$institution)
     instructor <- safe(p$instructor); link <- safe(p$link)
+    teaser_id <- glue("desc-{if (code != '') tolower(code) else make.names(name)}")
+    has_desc <- safe(p$description) != ""
 
-    # Title (h2), clickable to the course page if a link exists
+    # Title: plain heading, clickable to expand its description if one exists
     title_text <- if (code != "") glue("{code} \u2013 {name}") else name
-    heading <- if (link != "") glue("## [{title_text}]({link})") else glue("## {title_text}")
+    heading <- if (has_desc) {
+      glue('<h2 class="expandable-title" onclick="toggleAbstract(\'{teaser_id}\')">{title_text}</h2>')
+    } else {
+      glue("## {title_text}")
+    }
     body <- c(body, heading, "")
 
-    # Info block: role, term, class teacher, institution course page link
+    # Info block: role, term, class teacher, institution course-page link
     info_lines <- character(0)
     if (role != "") info_lines <- c(info_lines, role)
     if (term != "") info_lines <- c(info_lines, term)
@@ -81,8 +87,8 @@ if (nrow(courses) > 0) {
       body <- c(body, paste(info_lines, collapse = "<br>"), "")
     }
 
-    # Description teaser (click-to-expand)
-    teaser <- format_teaser_block(p$description)
+    # Description (click-to-expand)
+    teaser <- format_teaser_block(p$description, teaser_id)
     if (!is.null(teaser)) body <- c(body, teaser, "")
   }
 }
@@ -97,20 +103,35 @@ if (nrow(materials) > 0) {
   for (r in seq_len(nrow(materials))) {
     p <- materials[r, ]
     name <- safe(p$name); link <- safe(p$link)
+    teaser_id <- glue("desc-{make.names(name)}")
+    has_desc <- safe(p$description) != ""
 
-    # Title (h2), clickable to the slides/material link if it exists
-    heading <- if (link != "") glue("## [{name}]({link})") else glue("## {name}")
+    # Title: plain heading, clickable to expand its description if one exists
+    heading <- if (has_desc) {
+      glue('<h2 class="expandable-title" onclick="toggleAbstract(\'{teaser_id}\')">{name}</h2>')
+    } else {
+      glue("## {name}")
+    }
     body <- c(body, heading, "")
 
-    # Description teaser (click-to-expand)
-    teaser <- format_teaser_block(p$description)
+    # Description (click-to-expand)
+    teaser <- format_teaser_block(p$description, teaser_id)
     if (!is.null(teaser)) body <- c(body, teaser, "")
+
+    # Two buttons: view in-browser vs. force a download of the same file
+    if (link != "") {
+      body <- c(
+        body,
+        glue(
+          '<a href="{link}" target="_blank" class="btn btn-outline-secondary btn-sm">Open in Browser</a> ',
+          '<a href="{link}" download class="btn btn-outline-secondary btn-sm">Download</a>'
+        ),
+        ""
+      )
+    }
   }
 }
 
-# ---------------------------------------------------------------------------
-# HEADER (includes the toggle-abstract JS, same pattern as research.qmd)
-# ---------------------------------------------------------------------------
 header <- c(
   "---",
   "---",
@@ -119,8 +140,9 @@ header <- c(
   "     src/_gen_teaching.R instead, then re-run Rscript src/_gen_teaching.R -->",
   "",
   "<script>",
-  "function toggleAbstract(el) {",
-  "  el.classList.toggle('expanded');",
+  "function toggleAbstract(id) {",
+  "  var el = document.getElementById(id);",
+  "  if (el) el.classList.toggle('expanded');",
   "}",
   "</script>",
   ""

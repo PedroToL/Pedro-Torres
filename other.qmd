@@ -1,0 +1,23 @@
+---
+---
+
+<!-- GENERATED FILE — do not edit directly. Edit src/other.csv or 
+     src/_gen_other.R instead, then re-run Rscript src/_gen_other.R -->
+
+<script>
+function toggleAbstract(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('expanded');
+}
+</script>
+
+# Non-academic Articles
+
+<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-article-1')">México y su escalera educativa: todos suben, pero unos empiezan desde el sótano</h2>
+
+*Mexico's educational ladder: everyone climbs, but some start in the basement*
+
+[Este País (May 2026)](https://estepais.com/tendencias_y_opiniones/mexico-escalera-educativa-movilidad-social/)
+
+<p id="desc-article-1" class="abstract-teaser" onclick="toggleAbstract('desc-article-1')">A look at the paradox of educational expansion in Mexico: each generation completes more years of schooling than the last, yet a parent's own education level remains the strongest predictor of a child's educational trajectory.</p>
+

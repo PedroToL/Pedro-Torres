@@ -33,7 +33,7 @@ h2 a:hover {
 }
 
 .abstract-teaser {
-  color: #595959;
+  color: #7a7a7a;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
@@ -52,3 +52,6 @@ h2 a:hover {
   opacity: 0.75;
 }
 
+.expandable-title {
+  color: #535353;
+}
