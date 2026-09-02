@@ -66,13 +66,19 @@ escape_html_attr <- function(x) {
   x
 }
 
-# Abstract block now carries an explicit id, so the title's click can target it
-format_abstract_block <- function(abstract, abstract_id) {
+# Abstract block: wrapped in a div carrying the id, so title clicks and the
+# abstract's own click both toggle the SAME element — and anything else
+# inside that wrapper (like slide buttons) hides/reveals together with it.
+format_abstract_block <- function(abstract, abstract_id, extra_html = NULL) {
   abstract <- safe(abstract)
   if (abstract == "") return(NULL)
+  extra <- if (!is.null(extra_html)) extra_html else ""
   glue(
-    '<p id="{abstract_id}" class="abstract-teaser" ',
-    'onclick="toggleAbstract(\'{abstract_id}\')">{escape_html_attr(abstract)}</p>'
+    '<div id="{abstract_id}" class="abstract-wrapper">',
+    '<p class="abstract-teaser" onclick="toggleAbstract(\'{abstract_id}\')">',
+    "{escape_html_attr(abstract)}</p>",
+    "{extra}",
+    "</div>"
   )
 }
 
@@ -100,9 +106,9 @@ for (i in seq_along(sections)) {
 
     # --- Title: plain heading, clickable to expand its abstract if one exists ---
     title_txt <- if (has_abstract) {
-      glue('<h2 class="expandable-title" onclick="toggleAbstract(\'{abstract_id}\')">{p$title}</h2>')
+      glue('<h2 class="entry-title expandable-title" onclick="toggleAbstract(\'{abstract_id}\')">{p$title}</h2>')
     } else {
-      glue("## {p$title}")
+      glue('<h2 class="entry-title">{p$title}</h2>')
     }
     body <- c(body, title_txt, "")
 
@@ -136,7 +142,21 @@ for (i in seq_along(sections)) {
     body <- c(body, paste(info_lines, collapse = "<br>"), "")
 
     # --- Abstract (click-to-expand, one-line ellipsis until expanded) ---
-    abstract_block <- format_abstract_block(p$abstract, abstract_id)
+    slides_link <- safe(p$slides)
+    slides_html <- if (ptype == "job market paper" && slides_link != "") {
+      glue(
+        '<div class="slides-buttons">',
+        '<a href="{slides_link}" target="_blank" onclick="event.stopPropagation()" ',
+        'class="btn btn-outline-secondary btn-sm">Open Slides</a> ',
+        '<a href="{slides_link}" download onclick="event.stopPropagation()" ',
+        'class="btn btn-outline-secondary btn-sm">Download Slides</a>',
+        "</div>"
+      )
+    } else {
+      NULL
+    }
+
+    abstract_block <- format_abstract_block(p$abstract, abstract_id, extra_html = slides_html)
     if (!is.null(abstract_block)) body <- c(body, abstract_block, "")
   }
 }

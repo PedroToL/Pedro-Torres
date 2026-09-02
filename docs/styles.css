@@ -53,5 +53,29 @@ h2 a:hover {
 }
 
 .expandable-title {
+  cursor: pointer !important;
   color: #535353;
 }
+
+.expandable-title:hover {
+  opacity: 0.7;
+}
+
+div.quarto-about-jolla {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1%;
+    padding-bottom: 1em;
+}
+
+.slides-buttons {
+  margin-top: 0.5rem;
+}
+
+.abstract-wrapper.expanded .abstract-teaser {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+}
+

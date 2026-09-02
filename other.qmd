@@ -15,9 +15,23 @@ function toggleAbstract(id) {
 
 <h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-article-1')">México y su escalera educativa: todos suben, pero unos empiezan desde el sótano</h2>
 
-*Mexico's educational ladder: everyone climbs, but some start in the basement*
-
-[Este País (May 2026)](https://estepais.com/tendencias_y_opiniones/mexico-escalera-educativa-movilidad-social/)
+*Mexico's educational ladder: everyone climbs, but some start in the basement*<br>[Este País (May 2026)](https://estepais.com/tendencias_y_opiniones/mexico-escalera-educativa-movilidad-social/)
 
 <p id="desc-article-1" class="abstract-teaser" onclick="toggleAbstract('desc-article-1')">A look at the paradox of educational expansion in Mexico: each generation completes more years of schooling than the last, yet a parent's own education level remains the strongest predictor of a child's educational trajectory.</p>
+
+# Code & Data
+
+<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-code-1')">GEOM: Functions for Estimating Inequality of Opportunity</h2>
+
+with Paolo Brunori and Pedro Salas-Rojo<br>[GitHub repository](https://github.com/pedrosalasrojo/GEOM)
+
+<p id="desc-code-1" class="abstract-teaser" onclick="toggleAbstract('desc-code-1')">R functions for estimating ex-ante and ex-post inequality of opportunity, developed for the Global Estimates of Opportunity and Mobility (GEOM) database, with functions for plotting trees, ECDFs, and other related figures.</p>
+
+# Music & Audio
+
+<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-media-1')">Baladí Radio</h2>
+
+Hosted by Fede and Java — Collaborated on audio-visual recording<br>[Instagram](https://www.instagram.com/baladi_radio/)<br>[Episode 017 – Mumbai](https://www.mixcloud.com/90milradio/baladi-017-mumbai-hosted-by-fede-java/)<br>[Episode 008 – London](https://www.mixcloud.com/90milradio/baladi-008/)
+
+<p id="desc-media-1" class="abstract-teaser" onclick="toggleAbstract('desc-media-1')">Baladí is a Berlin-based radio project, hosted by Fede and Java, pairing field recordings with curated and experimental music to capture the sonic identity of different cities around the world. Collaborated on two episodes as part of the audio-visual recording team.</p>
 

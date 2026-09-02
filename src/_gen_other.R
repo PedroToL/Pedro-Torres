@@ -19,6 +19,15 @@ items <- read_tsv(
 
 safe <- function(x) ifelse(is.na(x) | str_trim(x) == "", "", str_trim(x))
 
+# "A" / "A and B" / "A, B and C" — no Oxford comma (same convention as research/teaching)
+join_names <- function(names) {
+  n <- length(names)
+  if (n == 0) return("")
+  if (n == 1) return(names)
+  if (n == 2) return(paste(names, collapse = " and "))
+  paste0(paste(names[1:(n - 1)], collapse = ", "), " and ", names[n])
+}
+
 escape_html_attr <- function(x) {
   x <- str_replace_all(x, "&", "&amp;")
   x <- str_replace_all(x, '"', "&quot;")
@@ -60,17 +69,101 @@ if (nrow(articles) > 0) {
     }
     body <- c(body, heading, "")
 
-    # English gloss, italic, right under the title
-    if (title_en != "") body <- c(body, glue("*{title_en}*"), "")
+    # English gloss + venue link, joined tight into one paragraph
+    info_lines <- character(0)
+    if (title_en != "") info_lines <- c(info_lines, glue("*{title_en}*"))
 
-    # Info line: publication (date), linked
     venue_label <- if (publication != "" && date != "") glue("{publication} ({date})")
                     else if (publication != "") publication
                     else date
     venue_line <- if (link != "" && venue_label != "") glue("[{venue_label}]({link})") else venue_label
-    if (venue_line != "") body <- c(body, venue_line, "")
+    if (venue_line != "") info_lines <- c(info_lines, venue_line)
+
+    if (length(info_lines) > 0) {
+      body <- c(body, paste(info_lines, collapse = "<br>"), "")
+    }
 
     # Description (click-to-expand)
+    teaser <- format_teaser_block(p$description, teaser_id)
+    if (!is.null(teaser)) body <- c(body, teaser, "")
+  }
+}
+
+# ---------------------------------------------------------------------------
+# CODE & DATA
+# ---------------------------------------------------------------------------
+code_items <- items %>% filter(str_trim(type) == "code")
+if (nrow(code_items) > 0) {
+  body <- c(body, "# Code & Data", "")
+
+  for (r in seq_len(nrow(code_items))) {
+    p <- code_items[r, ]
+    title <- safe(p$title); link <- safe(p$link); coauthors <- safe(p$coauthors)
+    teaser_id <- glue("desc-code-{r}")
+    has_desc <- safe(p$description) != ""
+
+    heading <- if (has_desc) {
+      glue('<h2 class="entry-title expandable-title" onclick="toggleAbstract(\'{teaser_id}\')">{title}</h2>')
+    } else {
+      glue('<h2 class="entry-title">{title}</h2>')
+    }
+    body <- c(body, heading, "")
+
+    info_lines <- character(0)
+    if (coauthors != "") {
+      names <- str_split(coauthors, ",\\s*")[[1]]
+      names <- names[names != ""]
+      info_lines <- c(info_lines, glue("with {join_names(names)}"))
+    }
+    if (link != "") info_lines <- c(info_lines, glue("[GitHub repository]({link})"))
+    if (length(info_lines) > 0) {
+      body <- c(body, paste(info_lines, collapse = "<br>"), "")
+    }
+
+    teaser <- format_teaser_block(p$description, teaser_id)
+    if (!is.null(teaser)) body <- c(body, teaser, "")
+  }
+}
+
+# ---------------------------------------------------------------------------
+# MUSIC & AUDIO
+# ---------------------------------------------------------------------------
+media_items <- items %>% filter(str_trim(type) == "media")
+if (nrow(media_items) > 0) {
+  body <- c(body, "# Music & Audio", "")
+
+  for (r in seq_len(nrow(media_items))) {
+    p <- media_items[r, ]
+    title <- safe(p$title); link <- safe(p$link); role <- safe(p$role)
+    episodes_raw <- safe(p$episodes)
+    teaser_id <- glue("desc-media-{r}")
+    has_desc <- safe(p$description) != ""
+
+    heading <- if (has_desc) {
+      glue('<h2 class="entry-title expandable-title" onclick="toggleAbstract(\'{teaser_id}\')">{title}</h2>')
+    } else {
+      glue('<h2 class="entry-title">{title}</h2>')
+    }
+    body <- c(body, heading, "")
+
+    info_lines <- character(0)
+    if (role != "") info_lines <- c(info_lines, role)
+    if (link != "") info_lines <- c(info_lines, glue("[Instagram]({link})"))
+
+    # Episodes: "Label|url;Label|url" -> linked list, joined into the same tight block
+    if (episodes_raw != "") {
+      ep_pairs <- str_split(episodes_raw, ";\\s*")[[1]]
+      ep_lines <- sapply(ep_pairs, function(ep) {
+        parts <- str_split(ep, "\\|")[[1]]
+        if (length(parts) == 2) glue("[{parts[1]}]({parts[2]})") else ep
+      })
+      info_lines <- c(info_lines, ep_lines)
+    }
+
+    if (length(info_lines) > 0) {
+      body <- c(body, paste(info_lines, collapse = "<br>"), "")
+    }
+
     teaser <- format_teaser_block(p$description, teaser_id)
     if (!is.null(teaser)) body <- c(body, teaser, "")
   }
