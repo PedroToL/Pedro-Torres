@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - files/
 
 format:
   html:
@@ -16,6 +18,7 @@ format:
 
 website:
   title: "Pedro Torres"
+  site-url: "https://pedrotol.github.io/Pedro-Torres/"
   navbar:
     background: "#274f63"
     foreground: light
@@ -29,6 +32,6 @@ website:
       - text: "Other"
         href: other.qmd
   page-footer:
-    left: "© 2026 Pedro Javier Torres Lopez"
+    left: "© 2026 Pedro Javier Torres López"
     right: "p.torres-lopez@lse.ac.uk"
 

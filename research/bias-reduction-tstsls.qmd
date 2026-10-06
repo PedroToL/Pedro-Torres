@@ -1,0 +1,38 @@
+---
+title: 'Bias Reduction in TSTSLS Applications: A Quantile Adjustment Method'
+open-graph:
+  description: 'Many research questions require income and a second variable measured for the same people, but the two are often recorded in separate samples.'
+lightbox: true
+---
+
+<!-- GENERATED FILE — do not edit directly. Edit src/papers.csv or
+     src/_gen_qmd.R instead, then re-run Rscript src/_gen_qmd.R -->
+
+```{=html}
+<div data-paper>
+<div class="paper-venue">Latest version: October 2026</div>
+<div class="paper-buttons"><a class="pill" href="../files/TorresLopez_BiasReductionTSTS_JMP.pdf" target="_blank"><i class="bi bi-file-earmark-pdf"></i>PDF</a>
+<a class="pill" href="https://github.com/PedroToL/tstsqa" target="_blank"><i class="bi bi-github"></i>Code</a>
+<button class="pill" type="button" data-toggle-cite aria-expanded="false"><i class="bi bi-quote"></i>Cite</button></div>
+<div class="cite-panel" hidden>
+<div class="cite-tabs"><button type="button" class="cite-tab active" data-cite-tab="text">Text</button><button type="button" class="cite-tab" data-cite-tab="bibtex">BibTeX</button><button type="button" class="cite-copy"><i class="bi bi-clipboard"></i> Copy</button></div>
+<p class="cite-text" data-cite-body="text">Torres López, P. J. (2026). Bias Reduction in TSTSLS Applications: A Quantile Adjustment Method. Job market paper, London School of Economics.</p>
+<pre class="cite-bibtex" data-cite-body="bibtex" hidden>@unpublished{torres2026bias,
+  author = {Torres López, Pedro J.},
+  title  = {Bias Reduction in TSTSLS Applications: A Quantile Adjustment Method},
+  note   = {Job market paper, London School of Economics},
+  year   = {2026},
+  url    = {https://pedrotol.github.io/Pedro-Torres/files/TorresLopez_BiasReductionTSTS_JMP.pdf}
+}</pre>
+</div>
+</div>
+```
+
+## Abstract {.paper-heading}
+
+Many research questions require income and a second variable measured for the same people, but the two are often recorded in separate samples. Two-sample two-stage (TSTS) imputation bridges the samples by predicting income from characteristics both record. However, the predictions are less dispersed than actual income, and they miss any link between income and the second variable that the shared characteristics do not capture. Existing corrections fix these problems one at a time, and fixing only the first can make an estimate worse. I propose a quantile adjustment that replaces each prediction with the observed income at the same rank. It restores the income distribution and, in the same step, shifts the covariance with the second variable. I characterise when this shift helps and provide two diagnostics. In applications to Mexico, Ecuador and Chile, the adjustment comes closest to the full-sample benchmark on 14 of 19 estimands and within 0.6 percentage points of the best method on the other 5.
+
+```{=html}
+<nav class="paper-nav"><a href="../research.html"><i class="bi bi-arrow-left"></i> All research</a></nav>
+<script src="../files/research.js"></script>
+```

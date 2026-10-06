@@ -1,37 +1,58 @@
 ---
+pagetitle: "Other"
 ---
 
-<!-- GENERATED FILE — do not edit directly. Edit src/other.csv or 
+<!-- GENERATED FILE — do not edit directly. Edit src/other.csv or
      src/_gen_other.R instead, then re-run Rscript src/_gen_other.R -->
 
-<script>
-function toggleAbstract(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.toggle('expanded');
-}
-</script>
-
-# Non-academic Articles
-
-<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-article-1')">México y su escalera educativa: todos suben, pero unos empiezan desde el sótano</h2>
-
-*Mexico's educational ladder: everyone climbs, but some start in the basement*<br>[Este País (May 2026)](https://estepais.com/tendencias_y_opiniones/mexico-escalera-educativa-movilidad-social/)
-
-<p id="desc-article-1" class="abstract-teaser" onclick="toggleAbstract('desc-article-1')">A look at the paradox of educational expansion in Mexico: each generation completes more years of schooling than the last, yet a parent's own education level remains the strongest predictor of a child's educational trajectory.</p>
-
-# Code & Data
-
-<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-code-1')">GEOM: Functions for Estimating Inequality of Opportunity</h2>
-
-with Paolo Brunori and Pedro Salas-Rojo<br>[GitHub repository](https://github.com/pedrosalasrojo/GEOM)
-
-<p id="desc-code-1" class="abstract-teaser" onclick="toggleAbstract('desc-code-1')">R functions for estimating ex-ante and ex-post inequality of opportunity, developed for the Global Estimates of Opportunity and Mobility (GEOM) database, with functions for plotting trees, ECDFs, and other related figures.</p>
-
-# Music & Audio
-
-<h2 class="entry-title expandable-title" onclick="toggleAbstract('desc-media-1')">Baladí Radio</h2>
-
-Hosted by Fede and Java — Collaborated on audio-visual recording<br>[Instagram](https://www.instagram.com/baladi_radio/)<br>[Episode 017 – Mumbai](https://www.mixcloud.com/90milradio/baladi-017-mumbai-hosted-by-fede-java/)<br>[Episode 008 – London](https://www.mixcloud.com/90milradio/baladi-008/)
-
-<p id="desc-media-1" class="abstract-teaser" onclick="toggleAbstract('desc-media-1')">Baladí is a Berlin-based radio project, hosted by Fede and Java, pairing field recordings with curated and experimental music to capture the sonic identity of different cities around the world. Collaborated on two episodes as part of the audio-visual recording team.</p>
-
+```{=html}
+<h2 class="research-section">Writing</h2>
+<div class="teach-entry">
+<div class="teach-code">Aug<br>2026</div>
+<div>
+<h3 class="paper-title">El mérito no basta: por qué México necesita igualdad de oportunidades</h3>
+<div class="other-en">Merit is not enough: why Mexico needs equality of opportunity</div>
+<div class="paper-venue"><em>Este País</em> · in Spanish</div>
+<p class="teach-desc">Why rewarding observed merit is not the same as fairness: through two students sitting the same high-school entrance exam from very different starting points, the piece reviews the evidence on inequality of opportunity in Mexico and assesses the 2025 reform that replaced the Comipems exam.</p>
+<div class="paper-buttons"><a class="pill" href="https://estepais.com/tendencias_y_opiniones/igualdad-oportunidades-meritocracia-mexico/" target="_blank"><i class="bi bi-box-arrow-up-right"></i>Read</a></div>
+</div>
+</div>
+<div class="teach-entry">
+<div class="teach-code">May<br>2026</div>
+<div>
+<h3 class="paper-title">México y su escalera educativa: todos suben, pero unos empiezan desde el sótano</h3>
+<div class="other-en">Mexico's educational ladder: everyone climbs, but some start in the basement</div>
+<div class="paper-venue"><em>Este País</em> · in Spanish</div>
+<p class="teach-desc">A look at the paradox of educational expansion in Mexico: each generation completes more years of schooling than the last, yet a parent's own education level remains the strongest predictor of a child's educational trajectory.</p>
+<div class="paper-buttons"><a class="pill" href="https://estepais.com/tendencias_y_opiniones/mexico-escalera-educativa-movilidad-social/" target="_blank"><i class="bi bi-box-arrow-up-right"></i>Read</a></div>
+</div>
+</div>
+<h2 class="research-section">Code &amp; data</h2>
+<div class="teach-entry">
+<div class="teach-code"><i class="bi bi-github"></i></div>
+<div>
+<h3 class="paper-title">tstsqa: Bias Reduction for TSTS Imputation via Quantile Adjustment</h3>
+<p class="teach-desc">R package implementing the quantile adjustment method from my job market paper: qa_fit() restores the imputed income distribution and shifts its covariance with the second variable, and qa_diagnose() screens predictors and checks whether the adjustment is likely to help before you run it.</p>
+<div class="paper-buttons"><a class="pill" href="https://github.com/PedroToL/tstsqa" target="_blank"><i class="bi bi-github"></i>GitHub</a></div>
+</div>
+</div>
+<div class="teach-entry">
+<div class="teach-code"><i class="bi bi-github"></i></div>
+<div>
+<h3 class="paper-title">GEOM: Functions for Estimating Inequality of Opportunity</h3>
+<div class="paper-venue"><em>With Paolo Brunori and Pedro Salas-Rojo</em></div>
+<p class="teach-desc">R functions for estimating ex-ante and ex-post inequality of opportunity, developed for the Global Estimates of Opportunity and Mobility (GEOM) database, with tools for plotting trees, ECDFs and related figures.</p>
+<div class="paper-buttons"><a class="pill" href="https://github.com/pedrosalasrojo/GEOM" target="_blank"><i class="bi bi-github"></i>GitHub</a></div>
+</div>
+</div>
+<h2 class="research-section">Music &amp; audio</h2>
+<div class="teach-entry">
+<div class="teach-code"><i class="bi bi-broadcast"></i></div>
+<div>
+<h3 class="paper-title">Baladí Radio</h3>
+<div class="paper-venue">Audio-visual recording · hosted by Fede and Java</div>
+<p class="teach-desc">Baladí is a Berlin-based radio project pairing field recordings with curated and experimental music to capture the sonic identity of different cities around the world.</p>
+<div class="paper-buttons"><a class="pill" href="https://www.mixcloud.com/90milradio/baladi-017-mumbai-hosted-by-fede-java/" target="_blank"><i class="bi bi-play-circle"></i>017 · Mumbai</a><a class="pill" href="https://www.mixcloud.com/90milradio/baladi-008/" target="_blank"><i class="bi bi-play-circle"></i>008 · London</a><a class="pill" href="https://www.instagram.com/baladi_radio/" target="_blank"><i class="bi bi-instagram"></i>Instagram</a></div>
+</div>
+</div>
+```

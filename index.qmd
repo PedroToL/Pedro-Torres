@@ -1,29 +1,50 @@
 ---
-title: "Pedro Javier Torres Lopez"
-image: files/photo.jpg
-about:
-  template: jolla
-  image-shape: round
-  image-width: 15em
-  links:
-    - icon: envelope
-      text: Email
-      href: mailto:p.torres-lopez@lse.ac.uk
-    - icon: file-earmark-pdf
-      text: CV
-      href: files/cv.pdf
-    - icon: mortarboard-fill
-      text: Google Scholar
-      href: https://scholar.google.co.uk/citations?user=-RVGX1AAAAAJ&hl=en
-    - icon: github
-      text: GitHub
-      href: https://github.com/PedroToL
+pagetitle: "About"
 ---
 
-I am a PhD candidate in Social Policy at the [London School of Economics](https://www.lse.ac.uk), supervised by [Stephen Jenkins](https://www.lse.ac.uk/social-policy/people/academic-staff/Professor-Stephen-Jenkins) and [Francisco Ferreira](https://www.lse.ac.uk/people/francisco-h.-g.-ferreira). My research lies at the intersection of social policy, welfare analysis, development economics, and social economics, with a particular emphasis on methodological work.
+<!-- About page. Hand-written: edit this file directly.
+     The job market paper card comes from src/papers.csv (see _jmp-card.qmd). -->
 
-**I am currently on the 2026–27 academic job market.**
+```{=html}
+<div class="about-header">
+  <img class="about-photo" src="files/photo.jpg" alt="Pedro Javier Torres López">
+  <div class="about-id">
+    <span class="market-badge">On the 2026–27 job market</span>
+    <h1 class="about-name">Pedro Javier Torres López</h1>
+    <p class="about-role">PhD Candidate in Social Policy, <a href="https://www.lse.ac.uk">London School of Economics</a></p>
+    <p class="about-affil">International Inequalities Institute · CEEY, Mexico</p>
+    <div class="about-links">
+      <a class="pill" href="files/cv.pdf" target="_blank"><i class="bi bi-file-earmark-person"></i>CV</a>
+      <a class="pill" href="mailto:p.torres-lopez@lse.ac.uk"><i class="bi bi-envelope"></i>Email</a>
+      <a class="pill" href="https://scholar.google.co.uk/citations?user=-RVGX1AAAAAJ&hl=en" target="_blank"><i class="bi bi-mortarboard"></i>Google Scholar</a>
+      <a class="pill" href="https://github.com/PedroToL" target="_blank"><i class="bi bi-github"></i>GitHub</a>
+    </div>
+  </div>
+</div>
 
-## Research Interests
+<p class="about-statement">My research is in applied microeconomics and quantitative social science, with a strong methodological focus: I develop and adapt empirical methods for distributional analysis of inequality and mobility, and for causal inference, mostly with data from Mexico and Latin America.</p>
 
-Poverty and inequality · Labour economics · Applied econometrics · Computational social science
+<p class="about-section">Job market paper</p>
+```
+
+{{< include _jmp-card.qmd >}}
+
+```{=html}
+<div class="about-grid">
+  <div>
+    <p class="about-section">References</p>
+    <p class="ref"><a href="https://www.lse.ac.uk/social-policy/people/academic-staff/Professor-Stephen-Jenkins">Stephen Jenkins</a> <span>· LSE</span></p>
+    <p class="ref"><a href="https://www.lse.ac.uk/people/francisco-h.-g.-ferreira">Francisco Ferreira</a> <span>· LSE</span></p>
+    <!-- Third reference: copy the line above and change name, link and institution -->
+  </div>
+  <div>
+    <p class="about-section">Fields</p>
+    <p class="about-text">Development, Public, Labour and Social Economics<br>
+    Applied Microeconomics<br>
+    Computational Social Science<br>
+    Applied Econometrics</p>
+    <p class="about-section">Contact</p>
+    <p class="about-text">p.torres-lopez@lse.ac.uk<br>Department of Social Policy<br>London School of Economics<br>Houghton Street, London WC2A&nbsp;2AE</p>
+  </div>
+</div>
+```
