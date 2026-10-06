@@ -1,0 +1,16 @@
+<div class="paper-list">
+<% for (const item of items) { %>
+<div class="paper-card<%= item.image ? '' : ' no-image' %>" <%= metadataAttrs(item) %>>
+<% if (item.image) { %>
+<a class="paper-thumb" href="<%- item.path %>" tabindex="-1" aria-hidden="true">
+<img src="<%- item.image %>" alt="" loading="lazy">
+</a>
+<% } %>
+<div class="paper-body">
+<h2 class="paper-title"><a href="<%- item.path %>"><%= item.title %></a></h2>
+<% if (item.venue) { %><div class="paper-venue"><%= item.venue %></div><% } %>
+<% if (item.teaser) { %><a class="paper-teaser" href="<%- item.path %>"><%= item.teaser %></a><% } %>
+</div>
+</div>
+<% } %>
+</div>
