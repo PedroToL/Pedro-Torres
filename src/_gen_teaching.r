@@ -8,7 +8,8 @@
 #               (name = button label, link = file, description = optional sentence).
 #               The block only appears once at least one of its files exists.
 #   course    : a course you taught (code, name, role, term, institution,
-#               instructor = lecturers separated by commas, link = course page)
+#               instructor = lecturers separated by commas, link = course page,
+#               highlights = awards or ratings separated by ";")
 #   material  : teaching materials (name, link = file, description)
 
 suppressPackageStartupMessages({
@@ -95,6 +96,12 @@ if (nrow(courses) > 0) {
               glue('<h3 class="paper-title">{esc(safe(p$name))}</h3>'))
     if (meta != "")      html <- c(html, glue('<div class="paper-venue">{esc(meta)}</div>'))
     if (lect_line != "") html <- c(html, glue('<div class="paper-venue"><em>{esc(lect_line)}</em></div>'))
+    # Awards and evaluation scores, separated by ";" in the highlights column
+    highlights <- str_trim(str_split(safe(p$highlights), ";")[[1]])
+    highlights <- highlights[highlights != ""]
+    if (length(highlights) > 0) {
+      html <- c(html, glue('<div class="teach-highlights"><i class="bi bi-award"></i> {esc(paste(highlights, collapse = " · "))}</div>'))
+    }
     if (safe(p$description) != "") html <- c(html, glue('<p class="teach-desc">{esc(p$description)}</p>'))
     if (safe(p$link) != "") {
       html <- c(html, glue('<div class="paper-buttons"><a class="pill" href="{esc(p$link)}" target="_blank"><i class="bi bi-box-arrow-up-right"></i>Course page</a></div>'))

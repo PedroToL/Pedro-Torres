@@ -166,3 +166,4 @@ h2.research-section + .teach-entry { border-top: none; }
 
 /* Other page (other.qmd): English translation under a Spanish title */
 .other-en { font-style: italic; color: var(--muted); margin: 0 0 .25rem; }
+.teach-highlights { color: var(--accent); font-size: .92rem; font-weight: 500; margin: .35rem 0 0; }
