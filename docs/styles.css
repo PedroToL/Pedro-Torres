@@ -1,0 +1,168 @@
+/* Overall navbar height/padding */
+.navbar {
+  padding-top: .35rem;
+  padding-bottom: .35rem;
+}
+
+/* Site title on the left */
+.navbar-brand {
+  font-size: 1.2rem;
+}
+
+/* Nav links: About / Research / Teaching / Other */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  padding-left: .8rem;
+  padding-right: .8rem;
+}
+
+/* Kill underlines everywhere, full stop — no hover exception this time */
+a, a:hover, a:visited {
+  text-decoration: none !important;
+}
+
+/* Paper titles (h2 links) should read as plain heading text, not "linky" blue */
+h2 a,
+h2 a:visited {
+  color: inherit !important;
+}
+
+/* Give titles a subtle hover cue instead, since color+underline are both gone */
+h2 a:hover {
+  opacity: 0.7;
+}
+
+/* ===================================================================
+   Research page (research.qmd) and JMP page (research/)
+   =================================================================== */
+:root { --accent: #274f63; --accent-soft: #e8eff2; --muted: #6b6b6b; --hairline: #e3e3e3; }
+
+/* Paper page */
+.paper-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.25rem; }
+.pill {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .9rem; line-height: 1; padding: .45rem .9rem;
+  border: 1px solid var(--accent); border-radius: 999px;
+  background: transparent; color: var(--accent) !important; cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.pill:hover, .pill.active { background: var(--accent); color: #fff !important; }
+.cite-panel { background: var(--accent-soft); border-radius: 8px; padding: .9rem 1.1rem; margin: 0 0 1.5rem; }
+.cite-tabs { display: flex; gap: .4rem; margin-bottom: .7rem; }
+.cite-tab, .cite-copy {
+  font-size: .8rem; padding: .25rem .7rem; border-radius: 6px;
+  border: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer;
+}
+.cite-tab.active { background: #fff; border-color: var(--hairline); color: #222; }
+.cite-copy { margin-left: auto; }
+.cite-copy:hover { color: var(--accent); }
+.cite-text { margin: 0; font-size: .95rem; line-height: 1.6; }
+.cite-text a { color: var(--accent); word-break: break-all; }
+.cite-bibtex { margin: 0; font-size: .8rem; background: transparent; border: none; padding: 0; white-space: pre-wrap; }
+h2.paper-heading { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border: none; margin-top: 1.5rem; }
+.paper-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--hairline); font-size: .95rem; }
+.paper-nav a { color: var(--accent); }
+
+/* ===================================================================
+   About page (index.qmd)
+   =================================================================== */
+.about-header { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 2rem; align-items: center; margin-top: 1rem; }
+.about-photo { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; }
+.market-badge {
+  display: inline-block; font-size: .8rem; padding: .25rem .75rem; margin-bottom: .6rem;
+  border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+}
+h1.about-name { font-size: 2rem; margin: 0 0 .3rem; border: none; }
+.about-role { margin: 0 0 .15rem; color: #444; }
+.about-role a { color: inherit; border-bottom: 1px solid var(--hairline); }
+.about-affil { margin: 0 0 1rem; color: var(--muted); font-style: italic; font-size: .95rem; }
+.about-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+.about-statement {
+  margin: 2rem 0 0; padding-left: 1rem; border-left: 3px solid var(--accent);
+  font-size: 1.1rem; line-height: 1.7; color: #444;
+}
+.about-section {
+  font-size: .8rem; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--muted); margin: 2rem 0 .6rem;
+}
+.jmp-card {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.25rem; align-items: center;
+  border: 1px solid var(--hairline); border-radius: 8px; padding: 1rem 1.25rem;
+}
+.jmp-title { font-size: 1.15rem; font-weight: 500; color: var(--accent); margin: 0 0 .3rem; }
+.jmp-pitch { margin: 0; color: var(--muted); line-height: 1.6; }
+.jmp-buttons { display: flex; gap: .5rem; }
+.about-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.about-grid .about-section { margin-top: 2rem; }
+.ref { margin: 0 0 .35rem; }
+.ref a { color: #222; }
+.ref a:hover { color: var(--accent); }
+.ref span, .about-text { color: var(--muted); }
+.about-text { margin: 0; line-height: 1.6; }
+@media (max-width: 640px) {
+  .about-header { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: 1rem; }
+  .about-links { justify-content: center; }
+  .jmp-card, .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-grid { gap: 0; }
+}
+
+/* Research page entries */
+h2.research-section {
+  font-size: .8rem; font-weight: 400; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--muted); margin: 2.5rem 0 .25rem; padding-bottom: .4rem;
+  border-bottom: 1px solid var(--hairline);
+}
+h2.research-section:first-of-type { margin-top: 1rem; }
+.paper-entry {
+  display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 1.4rem;
+  padding: 1.25rem 0; border-top: 1px solid var(--hairline);
+}
+h2.research-section + .paper-entry { border-top: none; }
+.paper-entry.no-image { grid-template-columns: minmax(0, 1fr); }
+.paper-thumb img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border: 1px solid var(--hairline); border-radius: 6px;
+}
+.paper-venue { font-size: .95rem; color: var(--muted); margin-bottom: .5rem; line-height: 1.5; }
+.paper-venue a { color: inherit; border-bottom: 1px solid var(--hairline); }
+.paper-venue a:hover { color: var(--accent); }
+h3.paper-title { font-size: 1.15rem; font-weight: 500; margin: 0 0 .3rem; line-height: 1.4; }
+h3.paper-title a { color: var(--accent); }
+h3.paper-title a:hover { opacity: .75; }
+.paper-abstract { color: var(--muted); font-size: .95rem; line-height: 1.65; margin: 0 0 .75rem; }
+.abstract-more {
+  border: none; background: none; padding: 0 0 0 .25rem; cursor: pointer;
+  color: var(--accent); font-size: .9rem; font-weight: 600; white-space: nowrap;
+  text-decoration: underline; text-decoration-color: rgba(39, 79, 99, .35);
+  text-underline-offset: 3px;
+}
+.abstract-more:hover { text-decoration-color: var(--accent); }
+.abstract-more .bi { font-size: .75rem; }
+.paper-entry .paper-buttons { margin: .25rem 0 0; }
+.paper-entry .cite-panel { margin: .75rem 0 0; }
+@media (max-width: 640px) {
+  .paper-entry { grid-template-columns: minmax(0, 1fr); gap: .8rem; }
+  .paper-thumb img { aspect-ratio: 16 / 9; }
+}
+
+/* ===================================================================
+   Teaching page (teaching.qmd)
+   =================================================================== */
+.teach-entry {
+  display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 1.25rem;
+  padding: 1.25rem 0; border-top: 1px solid var(--hairline);
+}
+h2.research-section + .teach-entry { border-top: none; }
+.teach-code { font-family: SFMono-Regular, Menlo, Consolas, monospace; color: var(--accent); padding-top: .15rem; }
+.teach-code .bi { font-size: 1.3rem; }
+.teach-desc { color: var(--muted); font-size: .95rem; line-height: 1.65; margin: .5rem 0 .75rem; }
+.teach-statement { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.25rem; align-items: center; padding: 1rem 0; }
+.teach-statement p { margin: 0; color: var(--muted); line-height: 1.65; }
+.teach-statement .paper-buttons { margin: 0; }
+@media (max-width: 640px) {
+  .teach-entry { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  .teach-statement { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Other page (other.qmd): English translation under a Spanish title */
+.other-en { font-style: italic; color: var(--muted); margin: 0 0 .25rem; }
