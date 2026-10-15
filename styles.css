@@ -107,12 +107,13 @@ h1.about-name { font-size: 2rem; margin: 0 0 .3rem; border: none; }
 }
 
 /* Research page entries */
+/* Section headings (Research, Teaching, Other): uppercase labels, dark enough to mark each group */
 h2.research-section {
-  font-size: .8rem; font-weight: 400; letter-spacing: .07em; text-transform: uppercase;
-  color: var(--muted); margin: 2.5rem 0 .25rem; padding-bottom: .4rem;
-  border-bottom: 1px solid var(--hairline);
+  font-size: 1rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: #2b2b2b; margin: 3rem 0 .25rem; padding-bottom: .5rem;
+  border-bottom: 1px solid #c8c8c8;
 }
-h2.research-section:first-of-type { margin-top: 1rem; }
+h2.research-section:first-of-type { margin-top: 1.25rem; }
 .paper-entry {
   display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 1.4rem;
   padding: 1.25rem 0; border-top: 1px solid var(--hairline);
@@ -167,3 +168,4 @@ h2.research-section + .teach-entry { border-top: none; }
 /* Other page (other.qmd): English translation under a Spanish title */
 .other-en { font-style: italic; color: var(--muted); margin: 0 0 .25rem; }
 .teach-highlights { color: var(--accent); font-size: .92rem; font-weight: 500; margin: .35rem 0 0; }
+

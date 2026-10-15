@@ -241,6 +241,7 @@ jmp_slug <- papers$slug[papers$type == "job market paper"][1]
 jmp_page <- if (is.na(jmp_slug)) "" else paste0("research/", jmp_slug, ".html")
 
 html <- character(0)
+
 for (s in seq_len(nrow(sections))) {
   section_papers <- papers %>% filter(type == sections$type[s])
   if (nrow(section_papers) == 0) next
