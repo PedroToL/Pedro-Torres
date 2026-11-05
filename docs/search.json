@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Pedro Javier Torres López",
-    "section": "",
-    "text": "On the 2026–27 job market\n    Pedro Javier Torres López\n    PhD Candidate in Social Policy, London School of Economics\n    International Inequalities Institute · CEEY, Mexico\n    \n      CV\n      Email\n      Google Scholar\n      GitHub\n    \n  \n\n\nMy research is in applied microeconomics and quantitative social science, with a strong methodological focus: I develop and adapt empirical methods for distributional analysis of inequality and mobility, and for causal inference, mostly with data from Mexico and Latin America.\n\nJob market paper\n\n\n\nBias Reduction in TSTSLS Applications: A Quantile Adjustment Method\nA quantile adjustment for survey-to-survey imputation that restores the income distribution and shifts its covariance with the second variable, coming closest to the full-sample benchmark on 14 of 19 estimands across Mexico, Ecuador and Chile.\n\nPDFCode\n\n\n  \n    References\n    Stephen Jenkins · LSE\n    Francisco Ferreira · LSE\n    \n  \n  \n    Fields\n    Development, Public, Labour and Social Economics\n    Applied Microeconomics\n    Computational Social Science\n    Applied Econometrics\n    Contact\n    p.torres-lopez@lse.ac.ukDepartment of Social PolicyLondon School of EconomicsHoughton Street, London WC2A 2AE"
-  },
-  {
     "objectID": "teaching.html",
     "href": "teaching.html",
     "title": "Pedro Torres",
@@ -26,6 +19,13 @@
     "title": "Bias Reduction in TSTSLS Applications: A Quantile Adjustment Method",
     "section": "Abstract",
     "text": "Abstract\nMany research questions require income and a second variable measured for the same people, but the two are often recorded in separate samples. Two-sample two-stage (TSTS) imputation bridges the samples by predicting income from characteristics both record. However, the predictions are less dispersed than actual income, and they miss any link between income and the second variable that the shared characteristics do not capture. Existing corrections fix these problems one at a time, and fixing only the first can make an estimate worse. I propose a quantile adjustment that replaces each prediction with the observed income at the same rank. It restores the income distribution and, in the same step, shifts the covariance with the second variable. I characterise when this shift helps and provide two diagnostics. In applications to Mexico, Ecuador and Chile, the adjustment comes closest to the full-sample benchmark on 14 of 19 estimands and within 0.6 percentage points of the best method on the other 5.\n All research"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Pedro Javier Torres López",
+    "section": "",
+    "text": "On the 2026–27 job market\n    Pedro Javier Torres López\n    PhD Candidate, London School of Economics (Social Policy)\n    International Inequalities Institute · CEEY, Mexico\n    \n      CV\n      Email\n      Google Scholar\n      GitHub\n    \n  \n\n\nMy research lies at the intersection of applied microeconomics and quantitative social science, combining methodological work on the distributional analysis of inequality and mobility with applied research using causal inference techniques. Much of my work draws on data from Mexico and Latin America.\n\nJob market paper\n\n\n\nBias Reduction in TSTSLS Applications: A Quantile Adjustment Method\nA quantile adjustment for survey-to-survey imputation that restores the income distribution and shifts its covariance with the second variable, coming closest to the full-sample benchmark on 14 of 19 estimands across Mexico, Ecuador and Chile.\n\nPDFCode\n\n\n  \n    References\n    Stephen Jenkins · LSE\n    Francisco Ferreira · LSE\n    \n  \n  \n    Fields\n    Development, Public, Labour and Social Economics\n    Applied Microeconomics\n    Computational Social Science\n    Applied Econometrics\n    Contact\n    p.torres-lopez@lse.ac.ukDepartment of Social PolicyLondon School of EconomicsHoughton Street, London WC2A 2AE"
   },
   {
     "objectID": "other.html",
