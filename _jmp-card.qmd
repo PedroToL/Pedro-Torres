@@ -4,7 +4,7 @@
 <div class="jmp-card">
 <div class="jmp-text">
 <p class="jmp-title">Bias Reduction in TSTSLS Applications: A Quantile Adjustment Method</p>
-<p class="jmp-pitch">A quantile adjustment for survey-to-survey imputation that restores the income distribution and shifts its covariance with the second variable, coming closest to the full-sample benchmark on 14 of 19 estimands across Mexico, Ecuador and Chile.</p>
+<p class="jmp-pitch">A quantile-based adjustment for survey-to-survey imputation that restores the income distribution while shifting its covariance with a second variable. In applications to Mexico, Ecuador, and Chile, the method yields estimates closest to the full-sample benchmark for 14 of 19 estimands and within 0.6 percentage points of the best-performing method for the remaining five.</p>
 </div>
 <div class="jmp-buttons"><a class="pill" href="files/TorresLopez_BiasReductionTSTS_JMP.pdf" target="_blank"><i class="bi bi-file-earmark-pdf"></i>PDF</a><a class="pill" href="https://github.com/PedroToL/tstsqa" target="_blank"><i class="bi bi-github"></i>Code</a></div>
 </div>
