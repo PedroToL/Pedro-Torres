@@ -6,6 +6,11 @@ pagetitle: "Research"
      src/_gen_qmd.R instead, then re-run Rscript src/_gen_qmd.R -->
 
 ```{=html}
+<h2 class="research-section">Research statement</h2>
+<div class="teach-statement">
+<p>I am an applied microeconomist working on the measurement of inequality, poverty and mobility, mostly with data from Mexico and other Latin American countries.</p>
+<div class="paper-buttons"><a class="pill" href="files/research-statement.pdf" target="_blank"><i class="bi bi-file-earmark-text"></i>Research statement</a></div>
+</div>
 <h2 class="research-section" id="jmp">Job Market Paper</h2>
 <div class="paper-entry no-image" data-paper>
 <div class="paper-body">

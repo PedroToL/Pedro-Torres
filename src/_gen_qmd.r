@@ -18,6 +18,11 @@ project_root <- normalizePath(file.path(script_dir, ".."))
 papers_dir   <- file.path(project_root, "research")
 site_url     <- "https://pedrotol.github.io/Pedro-Torres/"   # used for full links in citations
 
+# Research statement block at the top of the Research page.
+# It only appears if the file exists.
+research_statement_file     <- "files/research-statement.pdf"
+research_statement_sentence <- "I am an applied microeconomist working on the measurement of inequality, poverty and mobility, mostly with data from Mexico and other Latin American countries."
+
 
 papers <- read_tsv(
   file.path(script_dir, "papers.csv"),
@@ -241,6 +246,17 @@ jmp_slug <- papers$slug[papers$type == "job market paper"][1]
 jmp_page <- if (is.na(jmp_slug)) "" else paste0("research/", jmp_slug, ".html")
 
 html <- character(0)
+
+if (file.exists(file.path(project_root, research_statement_file))) {
+  html <- c(html,
+            '<h2 class="research-section">Research statement</h2>',
+            '<div class="teach-statement">',
+            glue('<p>{esc(research_statement_sentence)}</p>'),
+            glue('<div class="paper-buttons"><a class="pill" href="{research_statement_file}" target="_blank"><i class="bi bi-file-earmark-text"></i>Research statement</a></div>'),
+            "</div>")
+} else {
+  message("Research statement file not found yet, block skipped: ", research_statement_file)
+}
 
 for (s in seq_len(nrow(sections))) {
   section_papers <- papers %>% filter(type == sections$type[s])

@@ -169,3 +169,5 @@ h2.research-section + .teach-entry { border-top: none; }
 .other-en { font-style: italic; color: var(--muted); margin: 0 0 .25rem; }
 .teach-highlights { color: var(--accent); font-size: .92rem; font-weight: 500; margin: .35rem 0 0; }
 
+.about-affil a { color: inherit; border-bottom: 1px solid var(--hairline); }
+.about-affil a:hover { color: var(--accent); }
