@@ -169,6 +169,8 @@ venue_html <- function(p) {
   co_txt <- if (length(co) == 0) "" else if (length(co) <= 5) paste("with", join_names(co)) else glue("with {length(co)} co-authors")
   line1 <- paste(c(label, if (co_txt != "") glue("<em>{esc(co_txt)}</em>")), collapse = ", ")
   line1 <- str_replace(line1, "^, ", "")
+  # Optional status, e.g. "R&R at Nature", shown in bold at the end of the line
+  if (safe(p$status) != "") line1 <- paste0(line1, ", <strong>", esc(safe(p$status)), "</strong>")
 
   other <- split_list(p$`other info`)
   line2 <- if (length(other) == 0) "" else if (p$type == "book chapter") glue("<em>Edited by {esc(join_names(other))}</em>") else if (length(co) > 5) glue("<em>Coordinated by {esc(join_names(other))}</em>") else ""
@@ -214,6 +216,9 @@ buttons_html <- function(p, prefix) {
   }
   if (safe(p$code_link) != "") {
     b <- c(b, pill(p$code_link, "Code", "github", 'target="_blank"'))
+  }
+  if (safe(p$data_link) != "") {
+    b <- c(b, pill(p$data_link, "Database", "database", 'target="_blank"'))
   }
   b <- c(b, '<button class="pill" type="button" data-toggle-cite aria-expanded="false"><i class="bi bi-quote"></i>Cite</button>')
   paste0('<div class="paper-buttons">', paste(b, collapse = "\n"), "</div>")
