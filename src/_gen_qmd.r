@@ -211,8 +211,6 @@ buttons_html <- function(p, prefix) {
   if (slides != "") {
     s <- paste0(prefix, slides)
     b <- c(b, pill(s, "Slides", "easel", 'target="_blank"'))
-    b <- c(b, pill(s, "Slides (HTML)", "download",
-                   glue('download="{basename(slides)}" title="Self-contained file: opens offline in any browser, interactive elements included"')))
   }
   if (safe(p$code_link) != "") {
     b <- c(b, pill(p$code_link, "Code", "github", 'target="_blank"'))
@@ -340,6 +338,21 @@ if (!is.na(jmp_slug)) {
 
   if (safe(p$abstract) != "") {
     body <- c(body, "## Abstract {.paper-heading}", "", str_squish(p$abstract), "")
+  }
+
+  # The slides, embedded below the abstract (only if the file exists)
+  slides <- safe(p$slides)
+  if (slides != "" && file.exists(file.path(project_root, slides))) {
+    s <- paste0("../", slides)
+    body <- c(body, "## Slides {.paper-heading}", "", "```{=html}",
+              '<div class="slides-embed">',
+              glue('<iframe src="{s}" title="Slides: {esc(p$title)}" loading="lazy" allowfullscreen></iframe>'),
+              "</div>",
+              '<div class="paper-buttons">',
+              glue('<a class="pill" href="{s}" target="_blank"><i class="bi bi-arrows-fullscreen"></i>Open full screen</a>'),
+              glue('<a class="pill" href="{s}" download="{basename(slides)}" title="Self-contained file: opens offline in any browser, interactive elements included"><i class="bi bi-download"></i>Download (HTML)</a>'),
+              "</div>",
+              "```", "")
   }
 
   figs <- split_list(p$figures, ";\\s*")
