@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pedrotol.github.io/Pedro-Torres/teaching.html</loc>
-    <lastmod>2026-10-08T11:29:35.015Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pedrotol.github.io/Pedro-Torres/research/bias-reduction-tstsls.html</loc>
-    <lastmod>2026-11-07T18:07:10.896Z</lastmod>
-  </url>
-  <url>
     <loc>https://pedrotol.github.io/Pedro-Torres/index.html</loc>
-    <lastmod>2026-11-07T16:28:01.498Z</lastmod>
-  </url>
-  <url>
-    <loc>https://pedrotol.github.io/Pedro-Torres/other.html</loc>
-    <lastmod>2026-10-06T15:35:47.585Z</lastmod>
+    <lastmod>2026-11-14T19:23:49.586Z</lastmod>
   </url>
   <url>
     <loc>https://pedrotol.github.io/Pedro-Torres/research.html</loc>
     <lastmod>2026-11-07T18:49:55.391Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pedrotol.github.io/Pedro-Torres/teaching.html</loc>
+    <lastmod>2026-10-08T11:29:35.015Z</lastmod>
+  </url>
+  <url>
+    <loc>https://pedrotol.github.io/Pedro-Torres/other.html</loc>
+    <lastmod>2026-10-06T15:35:47.585Z</lastmod>
   </url>
 </urlset>
